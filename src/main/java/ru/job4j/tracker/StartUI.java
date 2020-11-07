@@ -16,5 +16,6 @@ public class StartUI {
         tracker.add(time1);
         System.out.println(tracker.findById(2));
         System.out.println(Arrays.toString(tracker.findAll()));
+        System.out.println(Arrays.toString(tracker.findByName("Mmmmm")));
     }
 }

@@ -41,8 +41,9 @@ public class Tracker {
         Item[] equalsKey = new Item[items.length];
         int index = 0;
         for (Item item : items) {
-            if (key.equals(item.getName())) {
+            if (item != null && key.equals(item.getName())) {
                 equalsKey[index] = item;
+                index++;
             }
         }
         return Arrays.copyOf(equalsKey, index);
