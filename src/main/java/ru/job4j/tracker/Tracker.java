@@ -33,7 +33,7 @@ public class Tracker {
         Item[] equalsKey = new Item[size];
         int index = 0;
         for (int i = 0; i < size; i++) {
-            if ( key.equals(items[i].getName())) {
+            if (key.equals(items[i].getName())) {
                 equalsKey[index] = items[i];
                 index++;
             }
