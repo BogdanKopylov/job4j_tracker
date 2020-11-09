@@ -40,7 +40,7 @@ public class Player {
         System.out.println(this.name + ", выберите количество спичек от 1 до 3.");
         Scanner input = new Scanner(System.in);
         int matches = Integer.valueOf(input.nextLine());
-        System.out.println(this.name + " хочет взять " + matches + " " + matchNamesDav[matches]);
+        System.out.println(this.name + " хочет взять такое количество спичек: " + matches);
         return matches;
     }
 
