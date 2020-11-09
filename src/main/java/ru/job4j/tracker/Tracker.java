@@ -51,7 +51,6 @@ public class Tracker {
         if (rsl) {
             items[index] = item;
             items[index].setId(id);
-            rsl = item.equals(items[index]);
         }
         return rsl;
     }
@@ -63,7 +62,6 @@ public class Tracker {
             System.arraycopy(items, index + 1, items, index, size - index);
             items[size - 1] = null;
             size--;
-            rsl = findById(id) == null;
         }
         return rsl;
     }
