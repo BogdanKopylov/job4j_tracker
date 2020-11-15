@@ -56,7 +56,7 @@ public class StartUITest {
 
     @Test
     public void whenFindAllAction() {
-        Output output = new ConsoleOutput();
+        Output output = new StubOutput();
         Tracker tracker = new Tracker();
         Item item1 = tracker.add(new Item(1));
         Item item2 = tracker.add(new Item(2));
@@ -69,15 +69,17 @@ public class StartUITest {
                 new ExitProgramAction(output)
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(tracker.findAll(), is(items));
+        assertThat(output.toString(), is("Menu.\r\n0. === Show all items ====\r\n1." +
+                " === Exit Program ====\r\n" + item1.toString() + "\r\n" +
+                item2.toString() + "\r\nMenu.\r\n" +
+                "0. === Show all items ====\r\n1. === Exit Program ====\r\nПрограмма завершена.\r\n"));
     }
 
     @Test
     public void whenFindByNameAction() {
-        Output output = new ConsoleOutput();
+        Output output = new StubOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("My Item"));
-        Item[] items = {item};
         Input in = new StubInput(
                 new String[] {"0", "My Item", "1"}
         );
@@ -86,12 +88,14 @@ public class StartUITest {
                 new ExitProgramAction(output)
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(tracker.findByName("My Item"), is(items));
+        assertThat(output.toString(), is("Menu.\r\n0. === Find items by name ====\r\n" +
+                "1. === Exit Program ====\r\n" + item.toString() + "\r\n" +
+                "Menu.\r\n0. === Find items by name ====\r\n1. === Exit Program ====\r\nПрограмма завершена.\r\n"));
     }
 
     @Test
     public void whenFindByIDAction() {
-        Output output = new ConsoleOutput();
+        Output output = new StubOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("My Item"));
         Input in = new StubInput(
@@ -102,6 +106,8 @@ public class StartUITest {
                 new ExitProgramAction(output)
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(tracker.findById(1), is(item));
+        assertThat(output.toString(), is("Menu.\r\n0. === Find items by name ====\r\n" +
+                "1. === Exit Program ====\r\nЗаявки с таким именем не найдены.\r\nMenu.\r\n" +
+                "0. === Find items by name ====\r\n1. === Exit Program ====\r\nПрограмма завершена.\r\n"));
     }
 }
