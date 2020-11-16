@@ -69,10 +69,11 @@ public class StartUITest {
                 new ExitProgramAction(output)
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(output.toString(), is("Menu.\r\n0. === Show all items ====\r\n1." +
-                " === Exit Program ====\r\n" + item1.toString() + "\r\n" +
-                item2.toString() + "\r\nMenu.\r\n" +
-                "0. === Show all items ====\r\n1. === Exit Program ====\r\nПрограмма завершена.\r\n"));
+        String ln = System.lineSeparator();
+        assertThat(output.toString(), is("Menu." + ln + "0. === Show all items ====" + ln +
+                "1. === Exit Program ====" + ln + item1.toString() + ln +
+                item2.toString() + ln + "Menu." + ln +
+                "0. === Show all items ====" + ln + "1. === Exit Program ====" + ln + "Программа завершена." + ln));
     }
 
     @Test
@@ -88,9 +89,10 @@ public class StartUITest {
                 new ExitProgramAction(output)
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(output.toString(), is("Menu.\r\n0. === Find items by name ====\r\n" +
-                "1. === Exit Program ====\r\n" + item.toString() + "\r\n" +
-                "Menu.\r\n0. === Find items by name ====\r\n1. === Exit Program ====\r\nПрограмма завершена.\r\n"));
+        String ln = System.lineSeparator();
+        assertThat(output.toString(), is("Menu." + ln + "0. === Find items by name ====" + ln +
+                "1. === Exit Program ====" + ln + item.toString() + ln +
+                "Menu." + ln + "0. === Find items by name ====" + ln + "1. === Exit Program ====" + ln + "Программа завершена." + ln));
     }
 
     @Test
@@ -106,8 +108,9 @@ public class StartUITest {
                 new ExitProgramAction(output)
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(output.toString(), is("Menu.\r\n0. === Find items by name ====\r\n" +
-                "1. === Exit Program ====\r\nЗаявки с таким именем не найдены.\r\nMenu.\r\n" +
-                "0. === Find items by name ====\r\n1. === Exit Program ====\r\nПрограмма завершена.\r\n"));
+        String ln = System.lineSeparator();
+        assertThat(output.toString(), is("Menu." + ln + "0. === Find items by name ====" + ln +
+                "1. === Exit Program ====" + ln + "Заявки с таким именем не найдены." + ln + "Menu." + ln +
+                "0. === Find items by name ====" + ln + "1. === Exit Program ====" + ln + "Программа завершена." + ln));
     }
 }
