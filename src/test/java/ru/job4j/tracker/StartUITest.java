@@ -116,9 +116,9 @@ public class StartUITest {
     @Test
     public void whenInvalidExit() {
         Output out = new StubOutput();
-        Input in = new StubInput(
+        Input in = new ValidateInput(out, new StubInput(
                 new String[] {"8", "0"}
-        );
+        ));
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new ExitProgramAction(out)
@@ -133,5 +133,16 @@ public class StartUITest {
                         + "0. === Exit Program ====" + ln
                         + "Программа завершена." + ln
         ));
+    }
+
+    @Test
+    public void whenInvalidInput() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"one", "1"}
+        );
+        ValidateInput input = new ValidateInput(out, in);
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected, is(1));
     }
 }
