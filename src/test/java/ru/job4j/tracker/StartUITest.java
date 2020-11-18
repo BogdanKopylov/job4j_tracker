@@ -60,7 +60,6 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item1 = tracker.add(new Item(1));
         Item item2 = tracker.add(new Item(2));
-        Item[] items = {item1, item2};
         Input in = new StubInput(
                 new String[] {"0", "1"}
         );
@@ -112,5 +111,27 @@ public class StartUITest {
         assertThat(output.toString(), is("Menu." + ln + "0. === Find items by name ====" + ln +
                 "1. === Exit Program ====" + ln + "Заявки с таким именем не найдены." + ln + "Menu." + ln +
                 "0. === Find items by name ====" + ln + "1. === Exit Program ====" + ln + "Программа завершена." + ln));
+    }
+
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"8", "0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new ExitProgramAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(out.toString(), is(
+                "Menu." + ln
+                        + "0. === Exit Program ====" + ln
+                        + "Wrong input, you can select: 0 .. " + (actions.length - 1) + ln
+                        + "Menu." + ln
+                        + "0. === Exit Program ====" + ln
+                        + "Программа завершена." + ln
+        ));
     }
 }
