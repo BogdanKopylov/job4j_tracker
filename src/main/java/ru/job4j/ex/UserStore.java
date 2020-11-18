@@ -6,6 +6,7 @@ public class UserStore {
         for (User user : users) {
             if (user.getUsername().equals(login)) {
                 matchLogin = user;
+                break;
             }
         }
         if (matchLogin == null) {
@@ -19,9 +20,8 @@ public class UserStore {
             throw new UserInvalidException("Пользователь не валидный.");
         } else if (user.getUsername().length() < 3) {
             throw new UserInvalidException("Имя пользователя меньше трех символов.");
-        } else {
-            return true;
         }
+        return true;
     }
 
     public static void main(String[] args) {
