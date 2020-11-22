@@ -12,7 +12,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.INSTANCE;
         UserAction[] actions = {
                 new CreateAction(output),
                 new ExitProgramAction(output)
@@ -24,7 +24,7 @@ public class StartUITest {
     @Test
     public void whenReplaceItem() {
         Output output = new ConsoleOutput();
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.INSTANCE;
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input in = new StubInput(
@@ -41,7 +41,7 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Output output = new ConsoleOutput();
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.INSTANCE;
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
                 new String[] {"0", "1", "1"}
@@ -57,7 +57,7 @@ public class StartUITest {
     @Test
     public void whenFindAllAction() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.INSTANCE;
         Item item1 = tracker.add(new Item(1));
         Item item2 = tracker.add(new Item(2));
         Input in = new StubInput(
@@ -78,7 +78,7 @@ public class StartUITest {
     @Test
     public void whenFindByNameAction() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.INSTANCE;
         Item item = tracker.add(new Item("My Item"));
         Input in = new StubInput(
                 new String[] {"0", "My Item", "1"}
@@ -97,7 +97,7 @@ public class StartUITest {
     @Test
     public void whenFindByIDAction() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.INSTANCE;
         Item item = tracker.add(new Item("My Item"));
         Input in = new StubInput(
                 new String[] {"0", "1", "1"}
@@ -119,7 +119,7 @@ public class StartUITest {
         Input in = new ValidateInput(out, new StubInput(
                 new String[] {"8", "0"}
         ));
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.INSTANCE;
         UserAction[] actions = {
                 new ExitProgramAction(out)
         };
