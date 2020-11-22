@@ -3,7 +3,6 @@ package ru.job4j.tracker;
 import java.util.Arrays;
 
 public class Tracker {
-    private static final Tracker INSTANCE = new Tracker();
 
     private final Item[] items = new Item[100];
     private int ids = 1;
@@ -13,7 +12,7 @@ public class Tracker {
     }
 
     public static Tracker getInstance() {
-        return INSTANCE;
+        return Holder.INSTANCE;
     }
 
     public Item add(Item item) {
@@ -73,5 +72,9 @@ public class Tracker {
             size--;
         }
         return rsl;
+    }
+
+    private static final class Holder {
+        private static final Tracker INSTANCE = new Tracker();
     }
 }
