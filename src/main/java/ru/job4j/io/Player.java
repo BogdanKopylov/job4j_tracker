@@ -48,8 +48,8 @@ public class Player {
         boolean check = true;
         if (input < 1 || input > 3) {
             check = false;
-            System.out.println(this.name + ", сожалению, вы ввели недопустимое количество. " +
-                    "Ход передается следующему игроку.");
+            System.out.println(this.name + ", сожалению, вы ввели недопустимое количество. "
+                    + "Ход передается следующему игроку.");
             System.out.println("На столе осталось " + matches + " " + matchNames[matches]);
         }
         return check;
@@ -57,18 +57,19 @@ public class Player {
 
     public int overOrNot(int input, int matches) {
         if (input > matches && matches > 0) {
-            System.out.println("К сожалению, спичек на столе не хватает. " + this.name + " забирает " + " " +
-                    matches + " " + matchNamesDav[matches] + " и побеждает");
+            System.out.println("К сожалению, спичек на столе не хватает. "
+                    + this.name + " забирает " + " "
+                    + matches + " " + matchNamesDav[matches] + " и побеждает");
             matches = 0;
             System.out.println("На столе осталось " + matches + " " + matchNames[matches]);
         } else if (input == matches) {
-            System.out.println(this.name + " забирает " +
-                    input + " " + matchNamesDav[input] + " и побеждает");
+            System.out.println(this.name + " забирает "
+                    + input + " " + matchNamesDav[input] + " и побеждает");
             matches = 0;
             System.out.println("На столе осталось " + matches + " " + matchNames[matches]);
         } else {
-            System.out.println(this.name + " забирает " +
-                    input + " " + matchNamesDav[input]);
+            System.out.println(this.name + " забирает "
+                    + input + " " + matchNamesDav[input]);
             matches -= input;
             System.out.println("На столе осталось " + matches + " " + matchNames[matches]);
         }

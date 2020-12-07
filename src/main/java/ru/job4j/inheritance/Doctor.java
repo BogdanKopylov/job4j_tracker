@@ -7,6 +7,6 @@ public class Doctor extends Profession {
         return clinic;
     }
 
-    public void createMedCard(){
+    public void createMedCard() {
     }
 }

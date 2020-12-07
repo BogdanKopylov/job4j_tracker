@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Tracker {
-    TrackerSingle trackerSingle = TrackerSingle.getInstance();
+    private TrackerSingle trackerSingle = TrackerSingle.getInstance();
     private final List<Item> items = new ArrayList<>();
     private int ids = 1;
 
