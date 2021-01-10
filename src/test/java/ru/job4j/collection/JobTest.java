@@ -3,7 +3,6 @@ package ru.job4j.collection;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class JobTest {
                 new Job("Dima", 13)
         );
         Comparator<Job> comp = new JobAscByName();
-        Collections.sort(list, comp);
+        list.sort(comp);
         assertThat(list.get(2).getName(), is("Dima"));
     }
 
@@ -34,7 +33,7 @@ public class JobTest {
                 new Job("Dima", 13)
         );
         Comparator<Job> comp = new JobDescByName();
-        Collections.sort(list, comp);
+        list.sort(comp);
         assertThat(list.get(2).getName(), is("Bogdan"));
     }
 
@@ -47,7 +46,7 @@ public class JobTest {
                 new Job("Dima", 13)
         );
         Comparator<Job> comp = new JobAscByPriority();
-        Collections.sort(list, comp);
+        list.sort(comp);
         assertThat(list.get(2).getPriority(), is(44));
     }
 
@@ -60,7 +59,7 @@ public class JobTest {
                 new Job("Dima", 13)
         );
         Comparator<Job> comp = new JobDescByPriority();
-        Collections.sort(list, comp);
+        list.sort(comp);
         assertThat(list.get(2).getPriority(), is(33));
     }
 
