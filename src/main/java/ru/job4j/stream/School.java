@@ -1,7 +1,7 @@
 package ru.job4j.stream;
 
 import java.util.Arrays;
-import java.util.Comparator;
+
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -16,13 +16,17 @@ public class School {
         List<Student> students = Arrays.asList(
                 new Student(20, "Ivanov"),
                 new Student(10, "Zaicev"),
+                new Student(12, "Zaicev"),
                 new Student(13, "Stepanov"),
                 new Student(11, "Alekseev")
         );
 
         Map<String, Student> map = students.stream()
-                .distinct()
-                .collect(Collectors.toMap(Student::getSurname, e -> e));
+                .collect(Collectors.toMap(Student::getSurname,
+                        student -> student,
+                        (e1, e2) -> e1.getScore() > (e2.getScore()) ? e1 : e2));
+//                .distinct()
+//                .collect(Collectors.toMap(Student::getSurname, e -> e));
 
         System.out.println(map.keySet().stream()
                             .map(key -> key + " = " + map.get(key))
