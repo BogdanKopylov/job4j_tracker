@@ -39,8 +39,8 @@ public class PhoneDictionary {
 //            return forName || forSurname || forPhone || forAddress;
 //             };
 
-        ArrayList<Person> result = new ArrayList<>();
-        for (Person person : persons) {
+        var result = new ArrayList<Person>();
+        for (var person : persons) {
             if (combine.test(person)) {
                 result.add(person);
             }
