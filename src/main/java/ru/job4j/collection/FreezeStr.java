@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FreezeStr {
-    public static boolean eq(String left, String right) {
+    public static boolean eq(String left, String right){
         Map<Character, Integer> map = new HashMap<>();
         for(char ch : left.toCharArray()) {
             map.computeIfPresent(ch, (a, b) -> b + 1);
@@ -12,9 +12,12 @@ public class FreezeStr {
         }
         for(char ch : right.toCharArray()) {
             map.computeIfPresent(ch, (a, b) -> b - 1);
-            map.putIfAbsent(ch, 1);
-            if (map.get(ch) == 0) {
-                map.remove(ch);
+            try {
+                if (map.get(ch) == 0) {
+                    map.remove(ch);
+                }
+            } catch (NullPointerException e) {
+                return false;
             }
         }
         return map.isEmpty();

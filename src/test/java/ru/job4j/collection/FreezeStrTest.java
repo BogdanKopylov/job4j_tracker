@@ -13,6 +13,11 @@ public class FreezeStrTest {
     }
 
     @Test
+    public void whenNoEq() {
+        assertThat(FreezeStr.eq("Helo", "Hllloe"), is(false));
+    }
+
+    @Test
     public void whenNotEq() {
         assertThat(FreezeStr.eq("Hello", "Halle"), is(false));
     }
