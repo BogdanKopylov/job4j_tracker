@@ -23,6 +23,11 @@ public class FreezeStrTest {
     }
 
     @Test
+    public void whenNotEq2() {
+        assertThat(FreezeStr.eq("Hello", "Helloe"), is(false));
+    }
+
+    @Test
     public void whenNotMultiEq() {
         assertThat(FreezeStr.eq("heloo", "hello"), is(false));
     }

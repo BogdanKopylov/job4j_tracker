@@ -12,12 +12,9 @@ public class FreezeStr {
         }
         for(char ch : right.toCharArray()) {
             map.computeIfPresent(ch, (a, b) -> b - 1);
-            try {
-                if (map.get(ch) == 0) {
-                    map.remove(ch);
-                }
-            } catch (NullPointerException e) {
-                return false;
+            map.putIfAbsent(ch, -1);
+            if (map.get(ch) != null && map.get(ch) == 0) {
+                map.remove(ch);
             }
         }
         return map.isEmpty();
