@@ -6,9 +6,9 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class EasyStream {
-    List<Integer> list;
+    private List<Integer> list;
 
-    public EasyStream(List<Integer> list) {
+    private EasyStream(List<Integer> list) {
         this.list = list;
     }
 
